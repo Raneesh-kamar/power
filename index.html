@@ -347,6 +347,19 @@
     .nav-transparent {
       background: transparent;
     }
+
+    /* Make partner cards linkable without losing style */
+    .partner-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease;
+    }
+    .partner-link:hover .glass-card-strong {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(15,41,66,0.12);
+      border-color: var(--accent-cyan);
+    }
   </style>
 </head>
 <body>
@@ -366,7 +379,7 @@
       <div class="hidden md:flex items-center gap-8">
         <a href="#intro" class="text-sm font-medium hover:text-[#00A3E0] transition-colors text-white" id="nav-link-1">About</a>
         <a href="#services" class="text-sm font-medium hover:text-[#00A3E0] transition-colors text-white" id="nav-link-2">Services</a>
-        <a href="#philosophy" class="text-sm font-medium hover:text-[#00A3E0] transition-colors text-white" id="nav-link-3">Philosophy</a>
+        <a href="philosophy.html" class="text-sm font-medium hover:text-[#00A3E0] transition-colors text-white" id="nav-link-3">Philosophy</a>
         <a href="#contact" class="btn-primary text-sm">Contact</a>
       </div>
       <button id="mobile-menu-btn" class="md:hidden p-2 text-white" aria-label="Toggle menu" aria-expanded="false">
@@ -378,7 +391,7 @@
     <div id="mobile-menu" class="hidden md:hidden glass-card mx-4 mb-4 p-4">
       <a href="#intro" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">About</a>
       <a href="#services" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">Services</a>
-      <a href="#philosophy" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">Philosophy</a>
+      <a href="philosophy.html" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">Philosophy</a>
       <a href="#contact" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">Contact</a>
     </div>
   </nav>
@@ -470,52 +483,60 @@
       
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Taz -->
-        <div class="glass-card-strong p-8 reveal reveal-delay-1">
-          <div class="partner-image">
-            <img src="images/taz_1.png" alt="Portrait of Taz">
+        <a href="taz.html" class="partner-link reveal reveal-delay-1">
+          <div class="glass-card-strong p-8">
+            <div class="partner-image">
+              <img src="images/taz_1.png" alt="Portrait of Taz">
+            </div>
+            <h3 class="text-2xl font-semibold text-center mb-1" style="color: var(--deep-navy);">Taz</h3>
+            <p class="text-sm text-center mb-4 accent-text font-medium">Oil & Gas, DeepTech & Institutional Strategy</p>
+            <p class="text-center leading-relaxed" style="color: var(--soft-grey);">
+              Stakeholder Engagement Advisor- Oil & Gas, DeepTech AI & Digitization, Energy Intelligence, Advanced SMART Manufacturing, Consultant- Former Chairman of QG and QE, Business Advisor- Multiple Embassies.
+            </p>
           </div>
-          <h3 class="text-2xl font-semibold text-center mb-1" style="color: var(--deep-navy);">Taz</h3>
-          <p class="text-sm text-center mb-4 accent-text font-medium">Energy & Institutional Strategy</p>
-          <p class="text-center leading-relaxed" style="color: var(--soft-grey);">
-            Oil & Gas expert. Decades of expertise in Qatar's energy sector and government leadership. Trusted advisor at the highest levels.
-          </p>
-        </div>
+        </a>
         
         <!-- Raneesh -->
-        <div class="glass-card-strong p-8 reveal reveal-delay-2">
-          <div class="partner-image">
-            <img src="images/raneesh_1.png" alt="Portrait of Raneesh">
+        <a href="raneesh.html" class="partner-link reveal reveal-delay-2">
+          <div class="glass-card-strong p-8">
+            <div class="partner-image">
+              <img src="images/raneesh_1.png" alt="Portrait of Raneesh">
+            </div>
+            <h3 class="text-2xl font-semibold text-center mb-1" style="color: var(--deep-navy);">Raneesh</h3>
+            <p class="text-sm text-center mb-4 accent-text font-medium">AI Strategy, AI Architecture & Statistical Physics</p>
+            <p class="text-center leading-relaxed" style="color: var(--soft-grey);">
+              AI Strategy & Advanced Sovereign AI blueprints. Brings the rigour of Statistical-Physics to Enterprise AI : building systems that are provable, not just probable.
+            </p>
           </div>
-          <h3 class="text-2xl font-semibold text-center mb-1" style="color: var(--deep-navy);">Raneesh</h3>
-          <p class="text-sm text-center mb-4 accent-text font-medium">AI Architecture & First-Principles Physics</p>
-          <p class="text-center leading-relaxed" style="color: var(--soft-grey);">
-            AI Strategy & Advanced Sovereign AI blueprints. Brings the rigour of Statistical-Physics to Enterprise AI : building systems that are provable, not just probable.
-          </p>
-        </div>
+        </a>
         
         <!-- Dr. Jess Conser -->
-        <div class="glass-card-strong p-8 reveal reveal-delay-3">
-          <div class="partner-image">
-            <img src="images/jess_1.png" alt="Portrait of Dr. Jess Conser">
+        <a href="jess.html" class="partner-link reveal reveal-delay-3">
+          <div class="glass-card-strong p-8">
+            <div class="partner-image">
+              <img src="images/jess_1.png" alt="Portrait of Dr. Jess Conser">
+            </div>
+            <h3 class="text-2xl font-semibold text-center mb-1" style="color: var(--deep-navy);">Dr. Jess Conser</h3>
+            <p class="text-sm text-center mb-4 accent-text font-medium">AI Governance & Public Sector Transformation</p>
+            <p class="text-center leading-relaxed" style="color: var(--soft-grey);">
+              Swiss-American advisor to governments and global enterprises. Specialises in Ethical AI frameworks, Regulatory Alignment, and large-scale public sector digital strategy.
+            </p>
           </div>
-          <h3 class="text-2xl font-semibold text-center mb-1" style="color: var(--deep-navy);">Dr. Jess Conser</h3>
-          <p class="text-sm text-center mb-4 accent-text font-medium">AI Governance & Public Sector Transformation</p>
-          <p class="text-center leading-relaxed" style="color: var(--soft-grey);">
-            Swiss-American advisor to governments and global enterprises. Specialises in Ethical AI frameworks, Regulatory Alignment, and large-scale public sector digital strategy.
-          </p>
-        </div>
+        </a>
         
-        <!-- Prof. [Name] -->
-        <div class="glass-card-strong p-8 reveal reveal-delay-4">
-          <div class="partner-image">
-            <img src="images/prof_1.png" alt="Portrait of Professor">
+        <!-- Dr. Shelby -->
+        <a href="shelby.html" class="partner-link reveal reveal-delay-4">
+          <div class="glass-card-strong p-8">
+            <div class="partner-image">
+              <img src="images/shelby_1.png" alt="Portrait of Dr. Shelby">
+            </div>
+            <h3 class="text-2xl font-semibold text-center mb-1" style="color: var(--deep-navy);">Dr. Shelby</h3>
+            <p class="text-sm text-center mb-4 accent-text font-medium">Medical AI & Research Integration</p>
+            <p class="text-center leading-relaxed" style="color: var(--soft-grey);">
+              Johns Hopkins and Harvard. Visiting fellow at Hamad Medical Corporation. Bridges cutting-edge academic research with real-world clinical deployment.
+            </p>
           </div>
-          <h3 class="text-2xl font-semibold text-center mb-1" style="color: var(--deep-navy);">Prof. [Name]</h3>
-          <p class="text-sm text-center mb-4 accent-text font-medium">Medical AI & Research Integration</p>
-          <p class="text-center leading-relaxed" style="color: var(--soft-grey);">
-            Johns Hopkins and Harvard. Visiting fellow at Hamad Medical Corporation. Bridges cutting-edge academic research with real-world clinical deployment.
-          </p>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -651,7 +672,7 @@
     </div>
   </section>
 
-  <!-- Philosophy Section -->
+  <!-- Philosophy Section (still on homepage) -->
   <section id="philosophy" class="py-24 relative overflow-hidden" style="background: linear-gradient(180deg, var(--cool-mist) 0%, var(--soft-white) 100%);">
     <div class="max-w-7xl mx-auto px-6">
       <div class="max-w-3xl mx-auto text-center">

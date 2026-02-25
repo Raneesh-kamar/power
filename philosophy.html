@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power Consultancy – Philosophy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Removed Google fonts – now using Apple system font stack -->
+  <style>
+    :root {
+      --soft-white: #F4F7FA;
+      --cool-mist: #E6EDF5;
+      --deep-navy: #0F2942;
+      --accent-blue: #0080FF;
+      --accent-cyan: #00A3E0;
+      --soft-grey: #5C6B7A;
+      --glass-white: rgba(244,247,250,0.7);
+      --glass-border: rgba(255,255,255,0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--soft-white);
+      color: var(--deep-navy);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 600;
+    }
+
+    .glass-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(244,247,250,0.6));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(15,41,66,0.06);
+    }
+
+    .glass-card-strong {
+      background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(244,247,250,0.75));
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(15,41,66,0.08);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--deep-navy), #1A3A5C);
+      color: white;
+      border-radius: 8px;
+      padding: 14px 28px;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,163,224,0.4), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(15,41,66,0.25);
+    }
+
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: 2px;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--deep-navy);
+      border: 2px solid var(--deep-navy);
+      border-radius: 8px;
+      padding: 12px 26px;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn-secondary:hover {
+      background: var(--deep-navy);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary:focus-visible {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: 2px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-delay { animation-delay: -2s; }
+    .floating-delay-2 { animation-delay: -4s; }
+
+    .nav-scrolled {
+      background: rgba(244,247,250,0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(15,41,66,0.05);
+    }
+
+    .nav-transparent {
+      background: transparent;
+    }
+
+    /* Philosophy page specific */
+    .philosophy-hero {
+      padding-top: 120px;
+      padding-bottom: 60px;
+      background: linear-gradient(180deg, var(--deep-navy) 0%, var(--soft-white) 100%);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation (same as index, but links point to index.html for other sections) -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 nav-transparent" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Power Consultancy Home">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#0F2942] to-[#1A3A5C] flex items-center justify-center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#00A3E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 17L12 22L22 17" stroke="#00A3E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#00A3E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="font-semibold text-lg hidden sm:block" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: white;" id="brand-name">Power Consultancy</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html#intro" class="text-sm font-medium hover:text-[#00A3E0] transition-colors text-white">About</a>
+        <a href="index.html#services" class="text-sm font-medium hover:text-[#00A3E0] transition-colors text-white">Services</a>
+        <a href="philosophy.html" class="text-sm font-medium hover:text-[#00A3E0] transition-colors text-white">Philosophy</a>
+        <a href="index.html#contact" class="btn-primary text-sm">Contact</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-white" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden glass-card mx-4 mb-4 p-4">
+      <a href="index.html#intro" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">About</a>
+      <a href="index.html#services" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">Services</a>
+      <a href="philosophy.html" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">Philosophy</a>
+      <a href="index.html#contact" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Philosophy Page Content -->
+  <section class="philosophy-hero">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6" style="text-shadow: 0 4px 12px rgba(0,0,0,0.2);">Our Philosophy</h1>
+      <p class="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">Built on first principles, executed with rigour, and designed for the highest stakes.</p>
+    </div>
+  </section>
+
+  <section class="py-24 bg-[var(--soft-white)]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Left column: key principles -->
+        <div>
+          <h2 class="text-3xl md:text-4xl font-semibold mb-8 reveal accent-underline" style="color: var(--deep-navy);">Core Principles</h2>
+          <div class="space-y-8">
+            <div class="glass-card p-6 reveal reveal-delay-1">
+              <h3 class="text-xl font-semibold mb-3" style="color: var(--deep-navy);">First‑Principles Thinking</h3>
+              <p class="leading-relaxed" style="color: var(--soft-grey);">We deconstruct every problem to its fundamental truths—physics, mathematics, and logic—then build upward. No borrowed assumptions, no unexamined trends.</p>
+            </div>
+            <div class="glass-card p-6 reveal reveal-delay-2">
+              <h3 class="text-xl font-semibold mb-3" style="color: var(--deep-navy);">Zero Vibe‑Code Policy</h3>
+              <p class="leading-relaxed" style="color: var(--soft-grey);">Production systems cannot be “mostly right.” Our code, models, and architectures are rigorously tested, documented, and auditable. If it can’t be proved, it doesn’t ship.</p>
+            </div>
+            <div class="glass-card p-6 reveal reveal-delay-3">
+              <h3 class="text-xl font-semibold mb-3" style="color: var(--deep-navy);">Neuro‑Symbolic AI</h3>
+              <p class="leading-relaxed" style="color: var(--soft-grey);">We combine the pattern recognition of neural networks with the transparency of symbolic reasoning. Every output traces back to source evidence—no hallucinations, no black boxes.</p>
+            </div>
+            <div class="glass-card p-6 reveal reveal-delay-4">
+              <h3 class="text-xl font-semibold mb-3" style="color: var(--deep-navy);">Trust as Architecture</h3>
+              <p class="leading-relaxed" style="color: var(--soft-grey);">Confidence is not an add‑on; it is designed into every layer—from secure, sovereign infrastructure to governance frameworks that involve operators from day one.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column: deeper exposition -->
+        <div>
+          <h2 class="text-3xl md:text-4xl font-semibold mb-8 reveal" style="color: var(--deep-navy);">Why It Matters</h2>
+          <div class="glass-card-strong p-8 reveal reveal-delay-1">
+            <p class="text-lg leading-relaxed mb-6" style="color: var(--soft-grey);">When a system controls energy grids, legal judgements, or national security, “good enough” is a liability. Our philosophy ensures:</p>
+            <ul class="list-disc pl-5 space-y-3 text-[var(--soft-grey)]">
+              <li><strong style="color: var(--deep-navy);">Provable outcomes</strong> – decisions can be traced, verified, and explained.</li>
+              <li><strong style="color: var(--deep-navy);">Resilience by design</strong> – failure modes are anticipated and neutralised before deployment.</li>
+              <li><strong style="color: var(--deep-navy);">Sovereign control</strong> – your data, your models, your infrastructure. No third‑party lock‑in.</li>
+              <li><strong style="color: var(--deep-navy);">Long‑term adaptability</strong> – built on first principles, our systems evolve with you, not against you.</li>
+            </ul>
+            <div class="mt-8 pull-quote">
+              <p class="text-xl italic" style="color: var(--deep-navy);">“In high‑stakes environments, being mostly right is wrong. We build for certainty.”</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional section: The Method -->
+      <div class="mt-24">
+        <h2 class="text-3xl md:text-4xl font-semibold text-center mb-12 reveal" style="color: var(--deep-navy);">The Power Method</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="glass-card p-6 text-center reveal reveal-delay-1">
+            <div class="w-16 h-16 rounded-full bg-[var(--deep-navy)] mx-auto mb-4 flex items-center justify-center">
+              <span class="text-2xl font-bold text-white">1</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" style="color: var(--deep-navy);">Deconstruct</h3>
+            <p class="text-sm" style="color: var(--soft-grey);">Identify the fundamental physics, constraints, and objectives. No preconceptions.</p>
+          </div>
+          <div class="glass-card p-6 text-center reveal reveal-delay-2">
+            <div class="w-16 h-16 rounded-full bg-[var(--deep-navy)] mx-auto mb-4 flex items-center justify-center">
+              <span class="text-2xl font-bold text-white">2</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" style="color: var(--deep-navy);">Architect</h3>
+            <p class="text-sm" style="color: var(--soft-grey);">Design from first principles—data, model, infrastructure, governance, and feedback.</p>
+          </div>
+          <div class="glass-card p-6 text-center reveal reveal-delay-3">
+            <div class="w-16 h-16 rounded-full bg-[var(--deep-navy)] mx-auto mb-4 flex items-center justify-center">
+              <span class="text-2xl font-bold text-white">3</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" style="color: var(--deep-navy);">Build & Prove</h3>
+            <p class="text-sm" style="color: var(--soft-grey);">Develop iteratively, but each increment is tested, documented, and traceable.</p>
+          </div>
+          <div class="glass-card p-6 text-center reveal reveal-delay-4">
+            <div class="w-16 h-16 rounded-full bg-[var(--deep-navy)] mx-auto mb-4 flex items-center justify-center">
+              <span class="text-2xl font-bold text-white">4</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2" style="color: var(--deep-navy);">Deploy & Evolve</h3>
+            <p class="text-sm" style="color: var(--soft-grey);">Launch with confidence, then refine with the same rigour that built it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (same as index) -->
+  <footer class="py-12 border-t" style="background: var(--soft-white); border-color: rgba(15,41,66,0.1);">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0F2942] to-[#1A3A5C] flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#00A3E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 17L12 22L22 17" stroke="#00A3E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="#00A3E0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="text-sm" style="color: var(--soft-grey);">Power Consultancy © 2026</span>
+        </div>
+        
+        <a href="index.html" class="text-sm hover:underline" style="color: var(--soft-grey);">
+          Back to home
+        </a>
+        
+        <p class="text-xs max-w-md text-center md:text-right" style="color: var(--soft-grey);">
+          All client information is held in strict confidence.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Shared functionality (navbar scroll, mobile menu, smooth scroll, etc.)
+    const navbar = document.getElementById('navbar');
+    const brandName = document.getElementById('brand-name');
+    const navLinks = document.querySelectorAll('#navbar a:not(.btn-primary)');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > 50) {
+        navbar.classList.add('nav-scrolled');
+        navbar.classList.remove('nav-transparent');
+        brandName.style.color = 'var(--deep-navy)';
+        navLinks.forEach(link => {
+          if(!link.classList.contains('btn-primary')) link.style.color = 'var(--soft-grey)';
+        });
+        mobileMenuBtn.style.color = 'var(--deep-navy)';
+      } else {
+        navbar.classList.remove('nav-scrolled');
+        navbar.classList.add('nav-transparent');
+        brandName.style.color = 'white';
+        navLinks.forEach(link => {
+           if(!link.classList.contains('btn-primary')) link.style.color = 'white';
+        });
+        mobileMenuBtn.style.color = 'white';
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    let isMenuOpen = false;
+    mobileMenuBtn.addEventListener('click', function() {
+      isMenuOpen = !isMenuOpen;
+      mobileMenu.classList.toggle('hidden', !isMenuOpen);
+      this.setAttribute('aria-expanded', isMenuOpen);
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        isMenuOpen = false;
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Scroll reveal animation (only if elements exist)
+    if (revealElements.length > 0) {
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { root: null, threshold: 0.1 });
+
+      revealElements.forEach(el => observer.observe(el));
+    }
+
+    // Smooth scroll for anchor links (only on same-page anchors)
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
