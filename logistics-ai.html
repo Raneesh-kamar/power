@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logistics AI – Power Consultancy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --soft-white: #F4F7FA;
+      --cool-mist: #E6EDF5;
+      --deep-navy: #0F2942;
+      --accent-blue: #0080FF;
+      --accent-cyan: #00A3E0;
+      --soft-grey: #5C6B7A;
+      --glass-white: rgba(244,247,250,0.7);
+      --glass-border: rgba(255,255,255,0.4);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--soft-white);
+      color: var(--deep-navy);
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2, h3, h4 { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-weight: 600; }
+
+    .glass-card { background: linear-gradient(145deg, rgba(255,255,255,0.8), rgba(244,247,250,0.6)); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 16px; box-shadow: 0 8px 32px rgba(15,41,66,0.06); }
+    .glass-card-strong { background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(244,247,250,0.75)); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.6); border-radius: 16px; box-shadow: 0 12px 40px rgba(15,41,66,0.08); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--deep-navy), #1A3A5C); color: white; border-radius: 8px; padding: 14px 28px; font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;
+    }
+    .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(0,163,224,0.4), transparent); transition: left 0.5s ease; }
+    .btn-primary:hover::before { left: 100%; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15,41,66,0.25); }
+    .btn-primary:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 2px; }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    .nav-scrolled { background: rgba(244,247,250,0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(15,41,66,0.05); }
+
+    .video-container {
+      width: 100%;
+      margin-top: 72px;
+      background: var(--soft-white);
+    }
+
+    .video-wrapper {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Gradient Overlay for Navbar Visibility -->
+  <div class="gradient-overlay"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: var(--soft-white); box-shadow: 0 2px 10px rgba(15,41,66,0.05);" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3" aria-label="Power Consultancy Home">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#0F2942] to-[#1A3A5C] flex items-center justify-center">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#00A3E0" stroke-width="2"/><path d="M2 17L12 22L22 17" stroke="#00A3E0" stroke-width="2"/><path d="M2 12L12 17L22 12" stroke="#00A3E0" stroke-width="2"/></svg>
+        </div>
+        <span class="font-semibold text-lg hidden sm:block" style="color: var(--deep-navy);" id="brand-name">Power Consultancy</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html#intro" class="text-sm font-medium hover:text-[#00A3E0] transition-colors" style="color: var(--deep-navy);">About</a>
+        <a href="index.html#services" class="text-sm font-medium hover:text-[#00A3E0] transition-colors" style="color: var(--deep-navy);">Services</a>
+        <a href="philosophy.html" class="text-sm font-medium hover:text-[#00A3E0] transition-colors" style="color: var(--deep-navy);">Philosophy</a>
+        <a href="index.html#contact" class="btn-primary text-sm">Contact</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden p-2" style="color: var(--deep-navy);" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden glass-card mx-4 mb-4 p-4">
+      <a href="index.html#intro" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">About</a>
+      <a href="index.html#services" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">Services</a>
+      <a href="philosophy.html" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">Philosophy</a>
+      <a href="index.html#contact" class="block py-2 text-sm font-medium" style="color: var(--deep-navy);">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Video Section -->
+  <div class="video-container">
+    <div class="video-wrapper">
+      <video controls autoplay loop muted preload="metadata">
+        <source src="videos/logisticsai2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <!-- Title Section -->
+  <section class="py-16" style="background: var(--soft-white);">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="glass-card-strong p-12 md:p-16 max-w-4xl mx-auto reveal">
+        <h1 class="text-4xl md:text-5xl font-semibold text-center mb-6" style="color: var(--deep-navy);">Logistics AI</h1>
+        <div class="space-y-6 text-lg leading-relaxed" style="color: var(--soft-grey);">
+          <p>Most Logistics-AI is solving yesterday's problems with yesterday's data. Train a model. Deploy. Pray nothing changes. Something always changes.</p>
+          
+          <p>A single Ant is an idiot. A colony is a genius. No CEO central command. No retraining. Just thousands of individuals following simple rules, yet together they build bridges, find shortest paths, and adapt when you destroy their world. Ants figured out Distributed Intelligence 100 million years ago.</p>
+          
+          <p>That's not biology. That's Physics written in Chemistry. Pheromones diffusing like heat. Positive feedback loops amplifying what works. Self-organization that would make any AI Engineer struggle!</p>
+          
+          <p>I stripped it down to First-Principles. Built a simulation where every ant follows three rules: <em>Explore until you find something</em>, <em>Mark the path on your way back</em>, <em>Follow the strongest trails</em>. Just 23 Variables.</p>
+          
+          <p>That's it.</p>
+          
+          <p>Watch the video simulation above, which I built with Python (NumPy & PyGame). Blue scouts explore. Orange carriers reinforce. A perfect supply chain emerges from pure chaos. Drop an obstacle? They reroute in seconds. Move the food? They find it again.</p>
+          
+          <p>Now map that to your world. The pheromones are your data streams. The scouts are your drones. The workers are your trucks. The obstacles are whatever chaos the world throws at you.</p>
+          
+          <p>Commercial delivery. Oil and gas logistics. Forces' supply chains. Same engine. Different context.</p>
+          
+          <p>The tools will change. The physics won't. I build on what works.</p>
+          
+          <p class="font-semibold pt-4" style="color: var(--deep-navy);">The ants showed us the blueprint. It's time we used it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 border-t" style="background: var(--soft-white); border-color: rgba(15,41,66,0.1);">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0F2942] to-[#1A3A5C] flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#00A3E0" stroke-width="2"/><path d="M2 17L12 22L22 17" stroke="#00A3E0" stroke-width="2"/><path d="M2 12L12 17L22 12" stroke="#00A3E0" stroke-width="2"/></svg>
+          </div>
+          <span class="text-sm" style="color: var(--soft-grey);">Power Consultancy © 2026</span>
+        </div>
+        <a href="index.html" class="text-sm hover:underline" style="color: var(--soft-grey);">Back to home</a>
+        <p class="text-xs max-w-md text-center md:text-right" style="color: var(--soft-grey);">All client information is held in strict confidence.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const revealElements = document.querySelectorAll('.reveal');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let isMenuOpen = false;
+    mobileMenuBtn.addEventListener('click', function() {
+      isMenuOpen = !isMenuOpen; 
+      mobileMenu.classList.toggle('hidden', !isMenuOpen); 
+      this.setAttribute('aria-expanded', isMenuOpen);
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', function() {
+      isMenuOpen = false; 
+      mobileMenu.classList.add('hidden'); 
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    if (revealElements.length) {
+      const observer = new IntersectionObserver(entries => entries.forEach(entry => { 
+        if (entry.isIntersecting) { 
+          entry.target.classList.add('active'); 
+          observer.unobserve(entry.target); 
+        } 
+      }), { threshold: 0.1 });
+      revealElements.forEach(el => observer.observe(el));
+    }
+  </script>
+</body>
+</html>

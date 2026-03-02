@@ -161,6 +161,23 @@
       100% { opacity: 0; transform: translateY(10px); }
     }
 
+    /* Pulse animation for the Logistics AI card */
+    @keyframes logistics-pulse {
+      0% {
+        box-shadow: 0 20px 50px rgba(15,41,66,0.1), 0 0 0 0 rgba(0,163,224,0.5);
+      }
+      50% {
+        box-shadow: 0 20px 50px rgba(15,41,66,0.1), 0 0 20px 5px rgba(0,163,224,0.8);
+      }
+      100% {
+        box-shadow: 0 20px 50px rgba(15,41,66,0.1), 0 0 0 0 rgba(0,163,224,0.5);
+      }
+    }
+
+    .logistics-link:hover {
+      animation: logistics-pulse 1.5s ease-in-out infinite;
+    }
+
     .floating {
       animation: float 6s ease-in-out infinite;
     }
@@ -521,7 +538,7 @@
             <h3 class="text-2xl font-semibold text-center mb-1" style="color: var(--deep-navy);">Taz</h3>
             <p class="text-sm text-center mb-4 accent-text font-medium">Oil & Gas, DeepTech & Institutional Strategy</p>
             <p class="text-center leading-relaxed" style="color: var(--soft-grey);">
-              Stakeholder Engagement Advisor- Oil & Gas, DeepTech AI & Digitization, Energy Intelligence, Advanced SMART Manufacturing, Consultant- Former Chairman of QG and QE, Business Advisor- Multiple Embassies.
+              Stakeholder Engagement Advisor to Oil & Gas, DeepTech AI & Digitization, Energy Intelligence, Advanced SMART Manufacturing. Advisor to the former Chairman of QG & QE. Business Advisor to Multiple Embassies.
             </p>
           </div>
         </a>
@@ -547,7 +564,7 @@
   <section id="services" class="py-24 relative" style="background: var(--soft-white);">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-semibold mb-4 reveal" style="color: var(--deep-navy);">From Strategy to Silicon</h2>
+        <h2 class="text-4xl md:text-5xl font-semibold mb-4 reveal" style="color: var(--deep-navy);">From Strategy to Production</h2>
         <p class="text-lg max-w-2xl mx-auto reveal reveal-delay-1" style="color: var(--soft-grey);">
           We architect and deliver across the full spectrum of advanced technology – for those who cannot afford to guess.
         </p>
@@ -596,8 +613,12 @@
           </p>
         </div>
         
-        <div class="glass-card service-card p-6 reveal reveal-delay-4">
-          <div class="w-12 h-12 rounded-lg mb-4 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(15,41,66,0.1), rgba(0,128,255,0.1));">
+        <!-- Logistics AI - now linked to logistics-ai.html with special hover animation -->
+        <a href="logistics-ai.html"
+           class="glass-card service-card p-6 reveal reveal-delay-4 block no-underline text-inherit logistics-link"
+           style="color: inherit; cursor: pointer;">
+          <div class="w-12 h-12 rounded-lg mb-4 flex items-center justify-center"
+               style="background: linear-gradient(135deg, rgba(15,41,66,0.1), rgba(0,128,255,0.1));">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F2942" stroke-width="2">
               <rect x="1" y="3" width="15" height="13" rx="2"/>
               <path d="M16 8h4a2 2 0 012 2v8a2 2 0 01-2 2H6"/>
@@ -609,7 +630,7 @@
           <p class="text-sm leading-relaxed" style="color: var(--soft-grey);">
             Predictive optimisation, digital twinning, real-time decision support for supply chains and infrastructure.
           </p>
-        </div>
+        </a>
         
         <div class="glass-card service-card p-6 reveal">
           <div class="w-12 h-12 rounded-lg mb-4 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(15,41,66,0.1), rgba(0,128,255,0.1));">
